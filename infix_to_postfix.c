@@ -14,21 +14,31 @@ char pop()
         return stack[top--];
 }
 
-int priority(char x)
+int priority(char ch)
 {
-    if(x == '(')
-        return 0;
-    if(x == '+' || x == '-')
+     switch (ch)
+    {
+    case '+':
+    case '-':
         return 1;
-    if(x == '*' || x == '/')
+
+    case '*':
+    case '/':
         return 2;
+
+    case '^':
+        return 3;
+    }
+    return -1;
+
+
 }
-int main()
+
+main()
 {
     char exp[20];
     char *e, x;
-    while(1){
-    printf("\nEnter the expression :: ");
+    printf("Enter the expression :: ");
     scanf("%s",exp);
     e = exp;
     while(*e != '\0')
@@ -54,5 +64,4 @@ int main()
     {
         printf("%c",pop());
     }
-}
 }
